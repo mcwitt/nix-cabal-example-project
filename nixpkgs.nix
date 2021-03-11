@@ -1,25 +1,24 @@
-
 let
   nixpkgsSrc = builtins.fetchTarball {
     # nixpkgs-19.03 as of 2019/04/15.
-    url = "https://github.com/NixOS/nixpkgs/archive/88498c0a9ffd5bdc6460e8667fb7626c4b604ed9.tar.gz";
-    sha256 = "0rqnn8psk9kclizqigrvwiwkllyqa5bjzpvd7h4fdd6hb4psjfb1";
+    url = "https://github.com/NixOS/nixpkgs/archive/29b0d4d0b600f8f5dd0b86e3362a33d4181938f9.tar.gz";
+    sha256 = "10cafssjk6wp7lr82pvqh8z7qiqwxpnh8cswnk1fbbw2pacrqxr1";
   };
 
   overlay = self: super: {
-    our-haskell-pkg-set = self.haskell.packages.ghc864.override {
+    our-haskell-pkg-set = self.haskell.packages.ghc8104.override {
       overrides = hself: hsuper: {
 
-        package1 = hself.callCabal2nix "package1" ./package1 {};
+        package1 = hself.callCabal2nix "package1" ./package1 { };
 
-        package2 = hself.callCabal2nix "package2" ./package2 {};
+        package2 = hself.callCabal2nix "package2" ./package2 { };
 
         our-local-pkgs = [
           hself.package1
           hself.package2
         ];
 
-        conduit = hself.callHackage "conduit" "1.3.1" {};
+        conduit = hself.callHackage "conduit" "1.3.1" { };
       };
     };
 

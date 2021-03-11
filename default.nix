@@ -1,6 +1,5 @@
-
 let
   nixpkgs = import ./nixpkgs.nix;
-
-in nixpkgs.our-project-exes
+in
+nixpkgs.our-project-exes
 
