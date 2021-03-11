@@ -22,7 +22,7 @@ let
       };
     };
 
-    our-shell = self.our-haskell-pkg-set.shellFor {
+    shell = self.our-haskell-pkg-set.shellFor {
       packages = pkgs: pkgs.our-local-pkgs;
       nativeBuildInputs = [
         self.cabal-install
